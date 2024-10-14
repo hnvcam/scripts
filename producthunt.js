@@ -1,4 +1,5 @@
-const buttons = document.querySelectorAll('[data-test="vote-button"]')
+
+cconst buttons = document.querySelectorAll('[data-test="vote-button"]')
 
 var index = 0
 
@@ -44,6 +45,7 @@ function scrollForMore() {
     }
     lastY = document.body.scrollHeight
     window.scrollTo(0, document.body.scrollHeight)
+    console.log('still scrolling...)
     setTimeout(scrollForMore, 5000)
 }
 
