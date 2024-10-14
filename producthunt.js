@@ -4,12 +4,13 @@ var index = 0
 
 function vote() {
     if (index >= buttons.length) {
-        console.log('No more items')
+        console.log('No more products to vote')
         return
     }
     const button = buttons[index]
     index++
-    if (typeof button.lastChild == 'undefined' || typeof button.lastChild.lastChild == 'undefined') {
+    if (typeof button.lastChild === 'undefined' 
+        || typeof button.lastChild.lastChild === 'undefined') {
         console.log('Invalid button', button)
         setTimeout(vote, 0)
         return
@@ -25,11 +26,24 @@ function vote() {
         if (className.search('upvoted') > 0) {
             console.log('voted, skip')
             setTimeout(vote, 0)
-            continue
+            return
         }
     }
     button.click()
-    setTimeout(vote, 1000)
+    console.log('voted')
+    setTimeout(vote, 2000)
 }
 
-vote()
+var lastY = 0
+function scrollForMore() {
+    if (lastY === document.body.scrollHeight) {
+        console.log('No more items to load. Start voting...')
+        vote()
+        return
+    }
+    lastY = document.body.scrollHeight
+    window.scrollTo(0, document.body.scrollHeight)
+    setTimeout(scrollForMore, 5000)
+}
+
+scrollForMore()
