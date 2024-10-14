@@ -37,9 +37,9 @@ function vote() {
 
 function scrollForMore() {
     if (lastY === document.body.scrollHeight) {
-        console.log('No more items to load. Start voting...')
         buttons = document.querySelectorAll('[data-test="vote-button"]')
-        vote()
+        console.log('No more items to load. Start voting for', buttons.length, 'products')
+        setTimeout(vote, 1000)
         return
     }
     lastY = document.body.scrollHeight
