@@ -8,6 +8,7 @@ function vote() {
         return
     }
     const button = buttons[index]
+    button.scrollIntoView()
     index++
     if (typeof button.lastChild === 'undefined' 
         || typeof button.lastChild.lastChild === 'undefined') {
