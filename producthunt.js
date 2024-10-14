@@ -44,7 +44,7 @@ function scrollForMore() {
     }
     lastY = document.body.scrollHeight
     window.scrollTo(0, document.body.scrollHeight)
-    console.log('still scrolling...)
+    console.log('still scrolling...')
     setTimeout(scrollForMore, 5000)
 }
 
