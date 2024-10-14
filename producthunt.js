@@ -1,7 +1,6 @@
-
-cconst buttons = document.querySelectorAll('[data-test="vote-button"]')
-
+var buttons
 var index = 0
+var lastY = 0
 
 function vote() {
     if (index >= buttons.length) {
@@ -36,10 +35,10 @@ function vote() {
     setTimeout(vote, 2000)
 }
 
-var lastY = 0
 function scrollForMore() {
     if (lastY === document.body.scrollHeight) {
         console.log('No more items to load. Start voting...')
+        buttons = document.querySelectorAll('[data-test="vote-button"]')
         vote()
         return
     }
