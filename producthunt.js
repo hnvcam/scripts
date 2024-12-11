@@ -43,7 +43,7 @@ function scrollForMore() {
         /// Waiting for long loading
         if (reachedEndCount < 3) {
             console.log('Reached end for', reachedEndCount, 'times')
-            reachEndCount++
+            reachedEndCount++
             setTimeout(scrollForMore, 5000)
             return
         }
