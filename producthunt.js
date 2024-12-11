@@ -16,21 +16,23 @@ function vote() {
         setTimeout(vote, 0)
         return
     }
-    const voteCount = parseInt(button.lastChild.lastChild.innerText)
+    const textDiv = button.lastChild.lastChild
+    const voteCount = parseInt(textDiv.innerText)
     if (voteCount > 50) {
         console.log(`High vote count ${voteCount}, skip`)
         setTimeout(vote, 0)
         return
     }
-    const classes = button.classList
+    
+    const classes = textDiv.classList
     for (const className of classes) {
-        if (className.search('upvoted') > 0) {
+        if (className.search('text-brand-500') > 0) {
             console.log('voted, skip')
             setTimeout(vote, 0)
             return
         }
     }
-    button.click()
+    button.firstChild.click()
     console.log('voted')
     setTimeout(vote, 2000)
 }
