@@ -26,7 +26,7 @@ function vote() {
     
     const classes = textDiv.classList
     for (const className of classes) {
-        if (className.search('text-brand-500') > 0) {
+        if (className.search('text-brand-500') >= 0) {
             console.log('voted, skip')
             setTimeout(vote, 0)
             return
