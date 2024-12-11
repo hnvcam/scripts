@@ -17,7 +17,7 @@ function vote() {
         return
     }
     const textDiv = button.lastChild.lastChild
-    const voteCount = parseInt(textDiv.innerText)
+    const voteCount = parseInt(textDiv.innerText.replaceAll(',',''))
     if (voteCount > 50) {
         console.log(`High vote count ${voteCount}, skip`)
         setTimeout(vote, 0)
