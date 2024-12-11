@@ -1,6 +1,7 @@
 var buttons
 var index = 0
 var lastY = 0
+var reachedEndCount = 0
 
 function vote() {
     if (index >= buttons.length) {
@@ -39,11 +40,21 @@ function vote() {
 
 function scrollForMore() {
     if (lastY === document.body.scrollHeight) {
+        /// Waiting for long loading
+        if (reachedEndCount < 3) {
+            console.log('Reached end for', reachedEndCount, 'times')
+            reachEndCount++
+            setTimeout(scrollForMore, 5000)
+            return
+        }
+        
         buttons = document.querySelectorAll('[data-test="vote-button"]')
         console.log('No more items to load. Start voting for', buttons.length, 'products')
         setTimeout(vote, 1000)
         return
     }
+    // reset counter if loading successfully
+    reachedEndCount = 0
     lastY = document.body.scrollHeight
     window.scrollTo(0, document.body.scrollHeight)
     console.log('still scrolling...')
